@@ -1,0 +1,59 @@
+{
+	"manifest_version": 3,
+	"version": "0.3.2",
+	"name": "xBox Chome Extension",
+	"description": "Abhijit K. https://www.fiverr.com/abhijitk260",
+	"permissions": [
+		"storage"
+	],
+	"content_scripts": [
+		{
+			"matches": [
+				"*://*.xbox.com/*"
+			],
+			"allFrames": true,
+			"matchOriginAsFallback": true,
+			"runAt": "document_start",
+			"js": [
+				"script.js"
+			],
+			"world": "MAIN"
+		},
+		{
+			"run_at": "document_start",
+			"matches": [
+				"*://*.xbox.com/*"
+			],
+			"js": [
+				"js/vendor.js",
+				"js/content_script.js"
+			]
+		}
+	],
+	"host_permissions": [
+		"*://*.xbox.com/*"
+	],
+	"background": {
+		"service_worker": "js/background.js"
+	},
+	"commands": {},
+	"action": {},
+	"icons": {
+		"512": "icon.png"
+	},
+	"web_accessible_resources": [
+		{
+			"resources": [
+				"js/vendor.js",
+				"js/injected.js",
+				"css/*.css",
+				"icon-16.png",
+				"icon-32.png",
+				"images/*"
+			],
+			"matches": [
+				"https://www.xbox.com/*"
+			]
+		}
+	]
+}
